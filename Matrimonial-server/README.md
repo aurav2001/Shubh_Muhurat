@@ -36,13 +36,28 @@ A robust, production-ready RESTful API backend for the **Shubh Muhurat Matrimoni
 
 ---
 
-## 📂 Project Structure
+## 📂 Project Structure (MVC Architecture)
 
 ```
 Matrimonial-server/
 ├── config/
 │   └── db.js               # Sequelize MySQL connection pool & auto-sync
-├── models/
+├── controllers/            # Controller layer handling business logic
+│   ├── authController.js   # Admin authentication & login
+│   ├── blogController.js   # Blog CRUD operations
+│   ├── communityController.js # Community classification CRUD
+│   ├── contentController.js # Dynamic CMS homepage content
+│   ├── healthController.js # Health, system status, and CORS inspection
+│   ├── inquiryController.js # Contact form, hero quick lead, registration
+│   ├── planController.js   # Membership tiers CRUD
+│   ├── storyController.js  # Success stories CRUD
+│   ├── testimonialController.js # Testimonial CRUD
+│   └── userController.js   # Matrimonial profiles CRUD
+├── middlewares/            # Custom express middlewares
+│   ├── corsMiddleware.js   # CORS with wildcard, LAN IPs, and domain whitelist
+│   ├── dbMiddleware.js     # Lazy database connection
+│   └── errorMiddleware.js  # Centralized error handler
+├── models/                 # Sequelize database models
 │   ├── Blog.js             # Blog post schema
 │   ├── Community.js        # Community showcase schema
 │   ├── Content.js          # Dynamic CMS content (LongText JSON)
@@ -50,8 +65,25 @@ Matrimonial-server/
 │   ├── Story.js            # Success stories schema
 │   ├── Testimonial.js      # Customer reviews schema
 │   └── User.js             # Registered matrimonial profiles schema
-├── app.js                  # Main Express application & API route definitions
-├── server.js               # Server entry point
+├── routes/                 # Express route definitions
+│   ├── authRoutes.js       # Admin authentication routes
+│   ├── blogRoutes.js       # Blog routes
+│   ├── communityRoutes.js  # Community showcase routes
+│   ├── contentRoutes.js    # Dynamic CMS routes
+│   ├── healthRoutes.js     # Health check & status routes
+│   ├── index.js            # Master router aggregator
+│   ├── inquiryRoutes.js    # Contact, hero lead, and registration routes
+│   ├── planRoutes.js       # Membership plan routes
+│   ├── storyRoutes.js      # Success story routes
+│   ├── testimonialRoutes.js# Customer testimonial routes
+│   └── userRoutes.js       # User profile routes
+├── services/               # Background services
+│   └── emailService.js     # Nodemailer SMTP transporter & templates
+├── data/                   # Database backups
+│   ├── db.json             # Seed records backup
+│   └── mysql_import.sql    # Complete MySQL database dump
+├── app.js                  # Modular Express application
+├── server.js               # Server launcher entrypoint
 ├── package.json            # Node.js dependencies & scripts
 ├── .htaccess               # Apache / Phusion Passenger configuration
 └── .env.example            # Sample environment variables

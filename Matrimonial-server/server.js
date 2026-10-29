@@ -1,4 +1,9 @@
 const app = require('./app');
 
-module.exports = app;
+if (require.main === module) {
+    if (typeof app.startServer === 'function') {
+        app.startServer();
+    }
+}
 
+module.exports = app;

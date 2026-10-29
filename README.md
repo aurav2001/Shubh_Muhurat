@@ -65,20 +65,17 @@ Shubh_Muhurat/
 │   ├── vite.config.js                # Vite build and development configuration
 │   └── tailwind.config.js            # Design tokens, color palette, and styling rules
 │
-├── Matrimonial-server/               # Backend API Server (Node.js + Express + Sequelize)
+├── Matrimonial-server/               # Backend API Server (Node.js + Express + Sequelize MVC)
 │   ├── config/                       # Database connection setup (db.js)
+│   ├── controllers/                  # Business logic (auth, blogs, users, communities, stories, etc.)
+│   ├── middlewares/                  # Custom middlewares (CORS whitelist, DB lazy connection, errors)
+│   ├── models/                       # Sequelize Data Models (User, Blog, Community, Story, Plan, etc.)
+│   ├── routes/                       # Modular Express routes & index aggregator
+│   ├── services/                     # Email service & Nodemailer SMTP transporter
 │   ├── data/                         # Production Database Backups
 │   │   ├── mysql_import.sql          # Ready-to-import full MySQL database dump
 │   │   └── db.json                   # JSON dump of database seed records
-│   ├── models/                       # Sequelize Data Models:
-│   │   ├── User.js                   # Matrimonial profile and credentials
-│   │   ├── Content.js                # Dynamic CMS headlines & banner configs
-│   │   ├── Blog.js                   # Matrimonial guidance articles
-│   │   ├── Community.js              # Community classifications
-│   │   ├── Testimonial.js            # Couple testimonials
-│   │   ├── Story.js                  # Success stories
-│   │   └── Plan.js                   # Membership tiers
-│   ├── app.js                        # Express server, REST endpoints, and controllers
+│   ├── app.js                        # Express app configuration & middleware pipeline
 │   ├── server.js                     # Server launcher
 │   ├── .env.example                  # Backend environment configuration template
 │   ├── .htaccess                     # LiteSpeed / Apache Passenger deployment rules
