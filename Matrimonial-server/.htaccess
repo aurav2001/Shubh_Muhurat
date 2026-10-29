@@ -1,0 +1,41 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/knirvmmr/api.shubhmuhurat.biz"
+PassengerBaseURI "/"
+PassengerNodejs "/home/knirvmmr/nodevenv/api.shubhmuhurat.biz/22/bin/node"
+PassengerAppType node
+PassengerStartupFile app.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+
+# Increase Request Body Size Limits for LiteSpeed/Apache
+LimitRequestBody 104857600
+<IfModule mod_lsapi.c>
+    lsapi_backend_pgrp_max_requests 1000
+    lsapi_backend_max_process_time 300
+</IfModule>
+
+# Global CORS Headers for all responses (Server-level guarantee)
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "https://shubhmuhurat.biz"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, x-requested-with"
+    Header always set Access-Control-Allow-Credentials "true"
+</IfModule>
+
+# Handle OPTIONS Preflight Requests directly in LiteSpeed/Apache
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ - [R=200,L]
+
+
+# Prevent static downloads of sensitive files
+<FilesMatch "\.(env|json|log)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+

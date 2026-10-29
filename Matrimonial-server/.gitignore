@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Archives & Builds
+*.zip
+dist/
+vercel_crash.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Large data files
+data/
+
+# Build output
+dist/
+
+# Editor directories
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Debug scripts
+add_sample_*.js
+debug_*.js
+diagnose_*.js
+fix_*.js
+test_*.js
+*.cjs
+migration.log
+.vercel
+.env*.local

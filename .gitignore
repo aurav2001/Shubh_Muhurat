@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Build Artifacts & Distribution
+dist/
+**/dist/
+build/
+**/build/
+
+# Backup Archives & Zips
+*.zip
+**/*.zip
+
+# Logs
+logs/
+*.log
+**/*.log
+npm-debug.log*
+remote_stderr.log
+
+# Editor & System Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary & debug files
+Matrimonial-server/debug_*.js
+Matrimonial-server/diagnose_*.js
+Matrimonial-server/fix_*.js
+Matrimonial-server/test_*.js
+Matrimonial-server/*.cjs
+Matrimonial-server/migration.log
+Matrimonial-server/.vercel
+Matrimonial-server/vercel_crash.json
